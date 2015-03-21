@@ -4,7 +4,7 @@ Created on Nov 9, 2011
 @author: ppa
 '''
 import abc
-from ultrafinance.lib.errors import UfException, Errors
+from analyzer.lib.errors import UfException, Errors
 
 
 class BaseDAM(object):

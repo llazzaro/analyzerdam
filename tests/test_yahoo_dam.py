@@ -4,7 +4,7 @@ Created on Nov 28, 2011
 @author: ppa
 '''
 import unittest
-from ultrafinance.dam.yahooDAM import YahooDAM
+from analyzerdam.yahooDAM import YahooDAM
 
 class testYahooDAM(unittest.TestCase):
 

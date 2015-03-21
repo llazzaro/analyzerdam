@@ -6,9 +6,9 @@ Created on July 31, 2011
 import urllib2
 from bs4 import BeautifulSoup
 import traceback
-from ultrafinance.lib.util import convertGoogCSVDate
-from ultrafinance.model import Quote, Tick
-from ultrafinance.lib.errors import UfException, Errors
+from analyzer.lib.util import convertGoogCSVDate
+from analyzer.model import Quote, Tick
+from analyzer.lib.errors import UfException, Errors
 
 import logging
 LOG = logging.getLogger()

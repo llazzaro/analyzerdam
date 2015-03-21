@@ -3,9 +3,9 @@ Created on Nov 9, 2011
 
 @author: ppa
 '''
-from ultrafinance.dam.baseDAM import BaseDAM
-from ultrafinance.dam.hbaseLib import HBaseLib
-from ultrafinance.model import Quote, Tick, TICK_FIELDS, QUOTE_FIELDS
+from analyzerdam.baseDAM import BaseDAM
+from analyzerdam.hbaseLib import HBaseLib
+from analyzer.model import Quote, Tick, TICK_FIELDS, QUOTE_FIELDS
 from hbase.Hbase import Mutation, ColumnDescriptor
 
 class HBaseDAM(BaseDAM):

@@ -11,8 +11,8 @@ sample usage:
 '''
 import urllib
 import traceback
-from ultrafinance.model import Quote
-from ultrafinance.lib.errors import UfException, Errors
+from analyzer.model import Quote
+from analyzer.lib.errors import UfException, Errors
 
 import logging
 LOG = logging.getLogger()

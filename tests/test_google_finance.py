@@ -4,8 +4,8 @@ Created on July 30, 2011
 @author: ppa
 '''
 import unittest
-from ultrafinance.dam.googleFinance import GoogleFinance
-from ultrafinance.lib.errors import UfException
+from analyzerdam.googleFinance import GoogleFinance
+from analyzer.lib.errors import UfException
 
 import logging
 LOG=logging.getLogger(__name__)

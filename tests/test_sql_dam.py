@@ -6,8 +6,8 @@ Created on Nov 27, 2011
 import unittest
 
 import os
-from ultrafinance.model import Tick, Quote
-from ultrafinance.dam.sqlDAM import SqlDAM
+from analyzer.model import Tick, Quote
+from analyzerdam.sqlDAM import SqlDAM
 
 class testSqlDAM(unittest.TestCase):
 

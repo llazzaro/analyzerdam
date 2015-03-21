@@ -6,8 +6,8 @@ Created on Nov 27, 2011
 import unittest
 
 import os
-from ultrafinance.model import Tick, Quote
-from ultrafinance.dam.excelDAM import ExcelDAM
+from analyzer.model import Tick, Quote
+from analyzerdam.excelDAM import ExcelDAM
 
 
 class testExcelDAM(unittest.TestCase):

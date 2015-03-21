@@ -5,7 +5,7 @@ Created on Jan 30, 2011
 '''
 from xlrd import open_workbook
 from xlwt import Workbook
-from ultrafinance.lib.errors import UfException, Errors
+from analyzer.lib.errors import UfException, Errors
 
 from os import path
 

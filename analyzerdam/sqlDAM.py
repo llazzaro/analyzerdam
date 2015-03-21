@@ -3,9 +3,9 @@ Created on Nov 9, 2011
 
 @author: ppa
 '''
-from ultrafinance.dam.baseDAM import BaseDAM
-from ultrafinance.model import Quote, Tick, TupleQuote
-from ultrafinance.lib.util import splitListEqually
+from analyzerdam.baseDAM import BaseDAM
+from analyzer.model import Quote, Tick, TupleQuote
+from analyzer.lib.util import splitListEqually
 import sys
 
 from sqlalchemy import Column, Integer, String, Float, Sequence, create_engine, and_

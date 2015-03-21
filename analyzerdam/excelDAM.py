@@ -3,10 +3,10 @@ Created on Nov 9, 2011
 
 @author: ppa
 '''
-from ultrafinance.dam.baseDAM import BaseDAM
-from ultrafinance.dam.excelLib import ExcelLib
-from ultrafinance.model import TICK_FIELDS, QUOTE_FIELDS, Quote, Tick
-from ultrafinance.lib.errors import UfException, Errors
+from analyzerdam.baseDAM import BaseDAM
+from analyzerdam.excelLib import ExcelLib
+from analyzer.model import TICK_FIELDS, QUOTE_FIELDS, Quote, Tick
+from analyzer.lib.errors import UfException, Errors
 
 from os import path
 

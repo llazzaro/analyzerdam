@@ -4,7 +4,7 @@ Created on Nov 9, 2011
 @author: ppa
 '''
 
-from ultrafinance.lib.errors import Errors, UfException
+from analyzer.lib.errors import Errors, UfException
 
 
 class DAMFactory(object):
@@ -13,19 +13,19 @@ class DAMFactory(object):
     def createDAM(damType, settings=None):
         ''' create DAM '''
         if 'yahoo' == damType:
-            from ultrafinance.dam.yahooDAM import YahooDAM
+            from analyzerdam.yahooDAM import YahooDAM
             dam=YahooDAM()
         elif 'google' == damType:
-            from ultrafinance.dam.googleDAM import GoogleDAM
+            from analyzerdam.googleDAM import GoogleDAM
             dam=GoogleDAM()
         elif 'excel' == damType:
-            from ultrafinance.dam.excelDAM import ExcelDAM
+            from analyzerdam.excelDAM import ExcelDAM
             dam=ExcelDAM()
         elif 'hbase' == damType:
-            from ultrafinance.dam.hbaseDAM import HBaseDAM
+            from analyzerdam.hbaseDAM import HBaseDAM
             dam=HBaseDAM()
         elif 'sql' == damType:
-            from ultrafinance.dam.sqlDAM import SqlDAM
+            from analyzerdam.sqlDAM import SqlDAM
             dam=SqlDAM()
         else:
             raise UfException(Errors.INVALID_DAM_TYPE,

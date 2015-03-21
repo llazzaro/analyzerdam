@@ -4,7 +4,7 @@ Created on Nov 27, 2011
 @author: ppa
 '''
 import unittest
-from ultrafinance.dam.googleDAM import GoogleDAM
+from analyzerdam.googleDAM import GoogleDAM
 
 
 class testGoogleDam(unittest.TestCase):

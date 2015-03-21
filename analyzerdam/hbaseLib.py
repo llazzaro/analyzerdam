@@ -8,7 +8,7 @@ from thrift.protocol import TBinaryProtocol
 from hbase import ttypes
 from hbase.Hbase import Client, ColumnDescriptor, Mutation
 
-from ultrafinance.lib.errors import UfException, Errors
+from analyzer.lib.errors import UfException, Errors
 
 import logging
 LOG=logging.getLogger()
