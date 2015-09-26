@@ -38,11 +38,8 @@ class FmSql(Base):
 
 
 class SqlDAM(BaseDAM):
-    '''
-    SQL DAM
-    '''
-    def __init__(self, echo=False):
-        ''' constructor '''
+
+    def __init__(self, setting, echo=False):
         super(SqlDAM, self).__init__()
         self.echo=echo
         self.first=True
@@ -51,7 +48,6 @@ class SqlDAM(BaseDAM):
         self.WriteSession=None
         self.writeSession=None
 
-    def setup(self, setting):
         ''' set up '''
         if 'db' not in setting:
             raise Exception("db not specified in setting")

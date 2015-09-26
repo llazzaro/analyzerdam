@@ -8,13 +8,13 @@ from analyzerdam.hbaseLib import HBaseLib
 from analyzer.model import Quote, Tick, TICK_FIELDS, QUOTE_FIELDS
 from hbase.Hbase import Mutation, ColumnDescriptor
 
+
 class HBaseDAM(BaseDAM):
     ''' HBase DAO '''
     QUOTE = 'quote'
     TICK = 'tick'
 
     def __init__(self, ip="localhost", port=9090):
-        ''' constructor '''
         super(HBaseDAM, self).__init__()
         self.__hbase = HBaseLib(ip, port)
 

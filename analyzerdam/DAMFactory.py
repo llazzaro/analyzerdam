@@ -26,12 +26,11 @@ class DAMFactory(object):
             dam=HBaseDAM()
         elif 'sql' == damType:
             from analyzerdam.sqlDAM import SqlDAM
-            dam=SqlDAM()
+            dam=SqlDAM(settings)
         else:
             raise UfException(Errors.INVALID_DAM_TYPE,
                               "DAM type is invalid %s" % damType)
 
-        dam.setup(settings)
         return dam
 
     @staticmethod
