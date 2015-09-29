@@ -11,7 +11,7 @@ from sqlalchemy.orm import sessionmaker, scoped_session
 
 from pyStock.models import Quote, Tick
 from pyStock import Base
-from analyzerdam.baseDAM import BaseDAM
+from analyzer.dam import BaseDAM
 from analyzer.lib.util import splitListEqually
 
 LOG=logging.getLogger()
