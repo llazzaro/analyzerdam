@@ -48,7 +48,6 @@ class SqlDAM(BaseDAM):
         self.WriteSession=None
         self.writeSession=None
 
-        ''' set up '''
         if 'db' not in setting:
             raise Exception("db not specified in setting")
 
@@ -69,7 +68,7 @@ class SqlDAM(BaseDAM):
 
         return self.writeSession
 
-    def readQuotes(self, start, end):
+    def read_quotes(self, start, end):
         ''' read quotes '''
         if end is None:
             end=sys.maxint
@@ -126,7 +125,7 @@ class SqlDAM(BaseDAM):
 
         return ret
 
-    def readTupleTicks(self, start, end):
+    def read_tuple_ticks(self, start, end):
         ''' read ticks as tuple '''
         if end is None:
             end=sys.maxint
@@ -141,7 +140,7 @@ class SqlDAM(BaseDAM):
 
         return [self.__sqlToTupleTick(row) for row in rows]
 
-    def readTicks(self, start, end):
+    def read_ticks(self, start, end):
         ''' read ticks '''
         if end is None:
             end=sys.maxint
@@ -156,7 +155,7 @@ class SqlDAM(BaseDAM):
 
         return [self.__sqlToTick(row) for row in rows]
 
-    def writeQuotes(self, quotes):
+    def write_quotes(self, quotes):
         ''' write quotes '''
         if self.first:
             Base.metadata.create_all(self.engine, checkfirst=True)
@@ -165,7 +164,7 @@ class SqlDAM(BaseDAM):
         session=self.getWriteSession()
         session.add_all([self.__quoteToSql(quote) for quote in quotes])
 
-    def writeTicks(self, ticks):
+    def write_ticks(self, ticks):
         ''' write ticks '''
         if self.first:
             Base.metadata.create_all(self.engine, checkfirst=True)
@@ -179,22 +178,7 @@ class SqlDAM(BaseDAM):
         session=self.getWriteSession()
         session.commit()
 
-    def destruct(self):
-        ''' destructor '''
-        if self.getWriteSession():
-            self.WriteSession.remove()
-            self.WriteSession=None
-            self.writeSession=None
-        if self.getReadSession():
-            self.getReadSession().remove()
-            self.ReadSession=None
-
-    '''
-    read/write fundamentals
-    TODO: when doing fundamentals and quote/tick operation together,
-    things may mess up
-    '''
-    def writeFundamental(self, keyTimeValueDict):
+    def write_fundamental(self, keyTimeValueDict):
         ''' write fundamental '''
         if self.first:
             Base.metadata.create_all(self.__getEngine(), checkfirst=True)
@@ -207,8 +191,7 @@ class SqlDAM(BaseDAM):
         finally:
             self.Session.remove()
 
-    def readFundamental(self):
-        ''' read fundamental '''
+    def read_fundamental(self):
         rows=self.__getSession().query(FmSql).filter(and_(FmSql.symbol == self.symbol))
         return self._sqlToFundamental(rows)
 
