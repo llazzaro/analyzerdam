@@ -24,7 +24,7 @@ test_requirements = [
 
 setup(
     name='analyzerdam',
-    version='0.1.1',
+    version='0.1.2',
     description='Data Access Model for analyzer',
     long_description=readme + '\n\n' + history,
     author='Leonardo Lazzaro',

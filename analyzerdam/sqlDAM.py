@@ -68,14 +68,14 @@ class SqlDAM(BaseDAM):
 
         return self.writeSession
 
-    def read_quotes(self, start, end):
+    def read_quotes(self, symbol, start, end):
         ''' read quotes '''
         if end is None:
             end=sys.maxint
 
         session=self.getReadSession()()
         try:
-            rows=session.query(Quote).filter(and_(Quote.symbol == self.symbol,
+            rows=session.query(Quote).filter(and_(Quote.symbol == symbol,
                                                             Quote.time >= int(start),
                                                             Quote.time < int(end)))
         finally:
@@ -83,14 +83,14 @@ class SqlDAM(BaseDAM):
 
         return [self.__sqlToQuote(row) for row in rows]
 
-    def readTupleQuotes(self, start, end):
+    def readTupleQuotes(self, symbol, start, end):
         ''' read quotes as tuple '''
         if end is None:
             end=sys.maxint
 
         session=self.getReadSession()()
         try:
-            rows=session.query(Quote).filter(and_(Quote.symbol == self.symbol,
+            rows=session.query(Quote).filter(and_(Quote.symbol == symbol,
                                                        Quote.time >= int(start),
                                                        Quote.time < int(end)))
         finally:
@@ -125,14 +125,14 @@ class SqlDAM(BaseDAM):
 
         return ret
 
-    def read_tuple_ticks(self, start, end):
+    def read_tuple_ticks(self, symbol, start, end):
         ''' read ticks as tuple '''
         if end is None:
             end=sys.maxint
 
         session=self.getReadSession()()
         try:
-            rows=session.query(Tick).filter(and_(Tick.symbol == self.symbol,
+            rows=session.query(Tick).filter(and_(Tick.symbol == symbol,
                                                       Tick.time >= int(start),
                                                       Tick.time < int(end)))
         finally:
@@ -140,14 +140,14 @@ class SqlDAM(BaseDAM):
 
         return [self.__sqlToTupleTick(row) for row in rows]
 
-    def read_ticks(self, start, end):
+    def read_ticks(self, symbol, start, end):
         ''' read ticks '''
         if end is None:
             end=sys.maxint
 
         session=self.getReadSession()()
         try:
-            rows=session.query(Tick).filter(and_(Tick.symbol == self.symbol,
+            rows=session.query(Tick).filter(and_(Tick.symbol == symbol,
                                                       Tick.time >= int(start),
                                                       Tick.time < int(end)))
         finally:
@@ -191,8 +191,8 @@ class SqlDAM(BaseDAM):
         finally:
             self.Session.remove()
 
-    def read_fundamental(self):
-        rows=self.__getSession().query(FmSql).filter(and_(FmSql.symbol == self.symbol))
+    def read_fundamental(self, symbol):
+        rows=self.__getSession().query(FmSql).filter(and_(FmSql.symbol == symbol))
         return self._sqlToFundamental(rows)
 
     def _sqlToFundamental(self, rows):
@@ -205,11 +205,11 @@ class SqlDAM(BaseDAM):
 
         return keyTimeValueDict
 
-    def _fundamentalToSqls(self, keyTimeValueDict):
+    def _fundamentalToSqls(self, symbol, keyTimeValueDict):
         ''' convert fundament dict to sqls '''
         sqls=[]
         for key, timeValues in keyTimeValueDict.iteritems():
             for timeStamp, value in timeValues.iteritems():
-                sqls.append(FmSql(self.symbol, key, timeStamp, value))
+                sqls.append(FmSql(symbol, key, timeStamp, value))
 
         return sqls

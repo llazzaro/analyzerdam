@@ -16,7 +16,7 @@ class DAMFactory(object):
             from analyzerdam.yahooDAM import YahooDAM
             dam=YahooDAM()
         elif 'google' == damType:
-            from analyzerdam.googleDAM import GoogleDAM
+            from analyzerdam.google import GoogleDAM
             dam=GoogleDAM()
         elif 'excel' == damType:
             from analyzerdam.excelDAM import ExcelDAM
