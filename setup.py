@@ -16,6 +16,7 @@ with open('HISTORY.rst') as history_file:
 
 requirements = [
     'googlefinance',
+    'requests',
 ]
 
 test_requirements = [
