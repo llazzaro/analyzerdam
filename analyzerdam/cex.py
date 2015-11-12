@@ -1,5 +1,10 @@
 import logging
 import datetime
+from time import sleep
+try:
+    from urllib2 import URLError
+except ImportError:
+    from urllib.error import URLError
 
 from cexapi.cexapi import API
 
@@ -20,7 +25,14 @@ class CexDAM(BaseDAM):
 
     def read_quotes(self, securities, start, end):
         for security in securities:
-            quote = self.api.ticker(security.symbol + '/USD')
+            try:
+                quote = self.api.ticker(security.symbol + '/USD')
+            except URLError as ex:
+                log.info('Error from cex api. Sleeping 5 sec')
+                sleep(5)
+                yield (security, [])
+                continue
+
             if 'error' in quote:
                 log.info('Error while retrieving quotes {0}'.format(quote))
                 raise Exception('API error')
