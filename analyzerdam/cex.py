@@ -27,7 +27,9 @@ class CexDAM(BaseDAM):
         for security in securities:
             try:
                 quote = self.api.ticker(security.symbol + '/USD')
+                sleep(1.1)  # to avoid getting banned on cex
             except URLError as ex:
+                log.info('Exception was {0}'.format(ex))
                 log.info('Error from cex api. Sleeping 5 sec')
                 sleep(5)
                 yield (security, [])
